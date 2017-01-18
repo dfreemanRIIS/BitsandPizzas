@@ -1,6 +1,7 @@
 package com.example.dfreeman.bitsandpizzas;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -23,6 +24,8 @@ public class MainActivity extends Activity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_create_order:
+                Intent intent = new Intent(this, OrderActivity.class);
+                startActivity(intent);
                 return true;
             case R.id.action_setting:
                 return true;
