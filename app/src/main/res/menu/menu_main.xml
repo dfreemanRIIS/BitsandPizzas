@@ -10,6 +10,12 @@
         app:showAsAction="ifRoom"
         />
 
+    <item android:id='@+id/action_share'
+        android:title="Action Share"
+        android:orderInCategory="2"
+        app:showAsAction="ifRoom"
+        android:actionProviderClass="android.widget.ShareActionProvider" />
+
     <item android:id="@+id/action_setting"
         android:title="Action Setting"
         android:orderInCategory="100"
