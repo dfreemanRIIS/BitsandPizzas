@@ -5,6 +5,7 @@ import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.widget.DrawerLayout;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,6 +21,7 @@ public class MainActivity extends Activity {
     private ShareActionProvider shareActionProvider;
     private String[] titles;
     private ListView drawerList;
+    private DrawerLayout drawerLayout;
 
     private class DrawerItemClickListener implements ListView.OnItemClickListener {
         @Override
@@ -48,6 +50,19 @@ public class MainActivity extends Activity {
         ft.addToBackStack(null);
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
         ft.commit();
+        setActionBarTitle(position);
+        //DrawerLayout drawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
+        drawerLayout.closeDrawer(drawerList);
+    }
+
+    private void setActionBarTitle(int position) {
+        String title;
+        if (position == 0) {
+            title = getResources().getString(R.string.app_name);
+        } else {
+            title = titles[position];
+        }
+        getActionBar().setTitle(title);
     }
 
     @Override
@@ -56,8 +71,12 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
         titles = getResources().getStringArray(R.array.titles);
         drawerList = (ListView)findViewById(R.id.drawer);
+        drawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
         drawerList.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_activated_1, titles));
         drawerList.setOnItemClickListener(new DrawerItemClickListener());
+        if(savedInstanceState ==  null) {
+            selectItem(0);
+        }
     }
 
     @Override
