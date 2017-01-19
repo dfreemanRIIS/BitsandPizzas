@@ -1,6 +1,8 @@
 package com.example.dfreeman.bitsandpizzas;
 
 import android.app.Activity;
+import android.app.Fragment;
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -11,6 +13,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.ShareActionProvider;
 
+import values.StoresFragment;
+
 public class MainActivity extends Activity {
 
     private ShareActionProvider shareActionProvider;
@@ -20,8 +24,30 @@ public class MainActivity extends Activity {
     private class DrawerItemClickListener implements ListView.OnItemClickListener {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            //
+            selectItem(position);
         }
+    }
+
+    private void selectItem(int position) {
+        Fragment fragment;
+        switch(position) {
+            case 1:
+                fragment = new PizzaFragment();
+                break;
+            case 2:
+                fragment = new PastaFragment();
+                break;
+            case 3:
+                fragment = new StoresFragment();
+                break;
+            default:
+                fragment = new TopFragment();
+        }
+        FragmentTransaction ft = getFragmentManager().beginTransaction();
+        ft.replace(R.id.content_frame, fragment);
+        ft.addToBackStack(null);
+        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+        ft.commit();
     }
 
     @Override
