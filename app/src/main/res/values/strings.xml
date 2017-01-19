@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">Bits and Pizzas</string>
+    <string name="title_top">Top fragment</string>
+    <string-array name="pizzas">
+        <item>Diavlo</item>
+        <item>Funghi</item>
+    </string-array>
+    <string-array name="pasta">
+        <item>Spaghetti</item>
+        <item>Lasagne</item>
+    </string-array>
+    <string-array name="stores">
+        <item>Cambridge</item>
+        <item>Sebastopol</item>
+    </string-array>
 </resources>
