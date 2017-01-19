@@ -2,6 +2,7 @@ package com.example.dfreeman.bitsandpizzas;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -51,7 +52,7 @@ public class MainActivity extends Activity {
                 fragment = new TopFragment();
         }
         FragmentTransaction ft = getFragmentManager().beginTransaction();
-        ft.replace(R.id.content_frame, fragment);
+        ft.replace(R.id.content_frame, fragment, "visable_fragment");
         ft.addToBackStack(null);
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
         ft.commit();
@@ -109,6 +110,29 @@ public class MainActivity extends Activity {
 
         getActionBar().setDisplayHomeAsUpEnabled(true);
         getActionBar().setHomeButtonEnabled(true);
+
+        getFragmentManager().addOnBackStackChangedListener(
+                new FragmentManager.OnBackStackChangedListener() {
+                    public void onBackStackChanged() {
+                        FragmentManager fragMan = getFragmentManager();
+                        Fragment fragment = fragMan.findFragmentByTag("visable_fragment");
+                        if (fragment instanceof TopFragment) {
+                            currentPosition = 0;
+                        }
+                        if (fragment instanceof PizzaFragment) {
+                            currentPosition = 1;
+                        }
+                        if (fragment instanceof PastaFragment) {
+                            currentPosition = 2;
+                        }
+                        if (fragment instanceof StoresFragment) {
+                            currentPosition = 3;
+                        }
+                        setActionBarTitle(currentPosition);
+                        drawerList.setItemChecked(currentPosition, true);
+                    }
+                }
+        );
 
     } //End on Create
 
