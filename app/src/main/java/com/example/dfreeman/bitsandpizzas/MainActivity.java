@@ -25,6 +25,7 @@ public class MainActivity extends Activity {
     private ListView drawerList;
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle drawerToggle;
+    private int currentPosition = 0;
 
     private class DrawerItemClickListener implements ListView.OnItemClickListener {
         @Override
@@ -34,6 +35,7 @@ public class MainActivity extends Activity {
     }
 
     private void selectItem(int position) {
+        currentPosition = position;
         Fragment fragment;
         switch(position) {
             case 1:
@@ -58,6 +60,12 @@ public class MainActivity extends Activity {
         drawerLayout.closeDrawer(drawerList);
     }
 
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt("position", currentPosition);
+    }
+
     private void setActionBarTitle(int position) {
         String title;
         if (position == 0) {
@@ -77,7 +85,11 @@ public class MainActivity extends Activity {
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawerList.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_activated_1, titles));
         drawerList.setOnItemClickListener(new DrawerItemClickListener());
-        if (savedInstanceState == null) {
+        //Display the correct fragment
+        if (savedInstanceState != null) {
+            currentPosition = savedInstanceState.getInt("position");
+            setActionBarTitle(currentPosition);
+        } else {
             selectItem(0);
         }
 
