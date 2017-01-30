@@ -8,17 +8,13 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-/**
- * Created by dfreeman
- */
-
 public class CaptionedImagesAdapter extends RecyclerView.Adapter<CaptionedImagesAdapter.ViewHolder> {
 
-    private String[] captions;
-    private int[] imageIds;
+    private final String[] captions;
+    private final int[] imageIds;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        private CardView cardView;
+        private final CardView cardView;
         public ViewHolder(CardView v) {
             super(v);
             cardView = v;

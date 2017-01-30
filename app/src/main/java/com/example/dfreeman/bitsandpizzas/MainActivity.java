@@ -53,7 +53,7 @@ public class MainActivity extends Activity {
                 fragment = new TopFragment();
         }
         FragmentTransaction ft = getFragmentManager().beginTransaction();
-        ft.replace(R.id.content_frame, fragment, "visable_fragment");
+        ft.replace(R.id.content_frame, fragment, "visible_fragment");
         ft.addToBackStack(null);
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
         ft.commit();
@@ -75,7 +75,9 @@ public class MainActivity extends Activity {
         } else {
             title = titles[position];
         }
-        getActionBar().setTitle(title);
+        if(getActionBar() != null) {
+            getActionBar().setTitle(title);
+        }
     }
 
     @Override
@@ -85,7 +87,7 @@ public class MainActivity extends Activity {
         titles = getResources().getStringArray(R.array.titles);
         drawerList = (ListView) findViewById(R.id.drawer);
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawerList.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_activated_1, titles));
+        drawerList.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_activated_1, titles));
         drawerList.setOnItemClickListener(new DrawerItemClickListener());
         //Display the correct fragment
         if (savedInstanceState != null) {
@@ -109,14 +111,16 @@ public class MainActivity extends Activity {
         };
         drawerLayout.setDrawerListener(drawerToggle);
 
-        getActionBar().setDisplayHomeAsUpEnabled(true);
+        if(getActionBar() != null) {
+            getActionBar().setDisplayHomeAsUpEnabled(true);
+        }
         getActionBar().setHomeButtonEnabled(true);
 
         getFragmentManager().addOnBackStackChangedListener(
                 new FragmentManager.OnBackStackChangedListener() {
                     public void onBackStackChanged() {
                         FragmentManager fragMan = getFragmentManager();
-                        Fragment fragment = fragMan.findFragmentByTag("visable_fragment");
+                        Fragment fragment = fragMan.findFragmentByTag("visible_fragment");
                         if (fragment instanceof TopFragment) {
                             currentPosition = 0;
                         }

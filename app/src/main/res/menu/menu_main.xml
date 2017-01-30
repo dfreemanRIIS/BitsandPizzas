@@ -4,22 +4,22 @@
     tools:context=".MainActivity">
 
     <item android:id="@+id/action_create_order"
-        android:title="Create Order"
+        android:title="@string/createOrder"
         android:icon="@drawable/ic_action_new_event"
         android:orderInCategory="1"
-        android:showAsAction="always"
+        app:showAsAction="always"
         />
 
     <item android:id='@+id/action_share'
-        android:title="Action Share"
+        android:title="@string/actionShare"
         android:orderInCategory="2"
-        android:showAsAction="ifRoom"
+        app:showAsAction="ifRoom"
         android:actionProviderClass="android.widget.ShareActionProvider" />
 
     <item android:id="@+id/action_setting"
-        android:title="Action Setting"
+        android:title="@string/actionSetting"
         android:orderInCategory="100"
-        android:showAsAction="never"
+        app:showAsAction="never"
         />
 
 </menu>

@@ -11,6 +11,8 @@ public class OrderActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order);
         ActionBar actionBar = getActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
     }
 }

@@ -1,12 +1,8 @@
 package com.example.dfreeman.bitsandpizzas;
 
-/**
- * Created by dfreeman
- */
-
 public class Pizza {
-    private String name;
-    private int imageResourceId;
+    private final String name;
+    private final int imageResourceId;
 
     //Defaults
     public static final Pizza[] pizzas = {
