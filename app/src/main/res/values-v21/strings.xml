@@ -21,4 +21,6 @@
     <string name="createOrder">Create Order</string>
     <string name="actionShare">Action Share</string>
     <string name="actionSetting">Action Setting</string>
+    <string name="title_activity_pizza_detail">PizzaDetailActivity</string>
+    <string name="welcome_text">We offer a range of freshly baked pizza and pasta dishes.  Why not try some?</string>
 </resources>
