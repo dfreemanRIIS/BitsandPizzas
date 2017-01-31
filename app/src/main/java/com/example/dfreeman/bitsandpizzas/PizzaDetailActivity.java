@@ -11,7 +11,6 @@ import android.widget.TextView;
 
 public class PizzaDetailActivity extends Activity {
 
-    private ShareActionProvider shareActionProvider;
     public static final String EXTRA_PIZZANO = "pizzaNo";
 
     @Override
@@ -35,6 +34,9 @@ public class PizzaDetailActivity extends Activity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        //Moved this here to limit to necessary scope
+        ShareActionProvider shareActionProvider;
+
         getMenuInflater().inflate(R.menu.menu_main, menu);
 
         TextView textView = (TextView)findViewById(R.id.pizza_text);

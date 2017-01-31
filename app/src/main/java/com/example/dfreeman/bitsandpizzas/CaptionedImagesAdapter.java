@@ -1,6 +1,5 @@
 package com.example.dfreeman.bitsandpizzas;
 
-import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -20,8 +19,8 @@ public class CaptionedImagesAdapter extends RecyclerView.Adapter<CaptionedImages
         this.listener = listener;
     }
 
-    public static interface Listener {
-        public void onClick(int position);
+    public interface Listener {
+        void onClick(int position);
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
