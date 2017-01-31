@@ -21,4 +21,5 @@
     <string name="createOrder">Create Order</string>
     <string name="actionShare">Action Share</string>
     <string name="actionSetting">Action Setting</string>
+    <string name="title_activity_pizza_detail">PizzaDetailActivity</string>
 </resources>
